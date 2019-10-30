@@ -24,3 +24,20 @@ target 'fcm-channel-ios_Example' do
     inherit! :search_paths
   end
 end
+
+post_install do |installer|
+  legacy_swift_pods = [
+    'Alamofire',
+    'AlamofireObjectMapper',
+    'ObjectMapper',
+  ]
+
+  installer.pods_project.targets.each do |target|
+    if legacy_swift_pods.include? target.name
+      target.build_configurations.each do |config|
+        Pod::UI.puts "Fixing #{target}(#{config})"
+        config.build_settings['SWIFT_VERSION'] = '4.2'
+      end
+    end
+  end
+end
