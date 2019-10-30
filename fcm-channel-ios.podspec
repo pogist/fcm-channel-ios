@@ -41,7 +41,35 @@ FCM Channel iOS is a client library for Rapid Pro platform that can be used insi
     ]
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.pod_target_xcconfig = {
+    'DEFINES_MODULE' => 'YES'
+  }
+
+  s.xcconfig = {
+    'SWIFT_INCLUDE_PATHS' => '${PODS_ROOT}/fcm-channel-ios/Classes',
+  }
+
+  s.public_header_files = 'fcm-channel-ios/Classes/**/*.{h}'
+
+  # Link the generated swift header for use from static libraries
+  s.script_phase = {
+    name: 'Link Swift headers',
+    script: <<-SH
+target_dir=${BUILT_PRODUCTS_DIR}/include/${PRODUCT_MODULE_NAME}/
+
+# Ensure the target include path exists
+mkdir -p ${target_dir}
+
+# Copy any file that looks like a Swift generated header to the include path
+if [ ! -f ${DERIVED_SOURCES_DIR}/*-Swift.h ]; then
+  echo "No swift headers found."
+else
+  cp ${DERIVED_SOURCES_DIR}/*-Swift.h ${target_dir}
+  echo "Copied headers!"
+fi
+    SH
+  }
+
   s.frameworks = 'UIKit'
   s.dependency 'AlamofireObjectMapper', '5.2.0'
   s.dependency 'Alamofire', '4.9.0'
