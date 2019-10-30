@@ -30,6 +30,7 @@ FCM Channel iOS is a client library for Rapid Pro platform that can be used insi
 
   s.ios.deployment_target = '10.3'
   s.swift_version = '4.2'
+  s.static_framework = true
 
   s.source_files = 'fcm-channel-ios/Classes/**/*.{m,h,swift}'
 
