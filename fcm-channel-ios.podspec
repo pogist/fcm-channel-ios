@@ -28,14 +28,17 @@ FCM Channel iOS is a client library for Rapid Pro platform that can be used insi
   s.source           = { :git => 'https://github.com/push-flow/fcm-channel-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '10.3'
   s.swift_version = '4.2'
 
   s.source_files = 'fcm-channel-ios/Classes/**/*.{m,h,swift}'
 
-  # s.resource_bundles = {
-  #   'fcm-channel-ios' => ['fcm-channel-ios/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'fcm-channel-ios' => [
+      'fcm-channel-ios/Assets/*.png',
+      'fcm-channel-ios/Classes/**/*.{xib}'
+    ]
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
