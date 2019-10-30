@@ -40,12 +40,11 @@ FCM Channel iOS is a client library for Rapid Pro platform that can be used insi
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
   s.dependency 'AlamofireObjectMapper', '5.2.0'
-  s.dependency 'Alamofire', '4.8.1'
+  s.dependency 'Alamofire', '4.9.0'
   s.dependency 'MDHTMLLabel', '1.0.2'
   s.dependency 'MBProgressHUD', '1.1.0'
   s.dependency 'TPKeyboardAvoiding'
   s.dependency 'ISScrollViewPageSwift', '1.0.0'
   s.dependency 'Reusable', '4.0.5'
   s.dependency 'IGListKit', '3.4.0'
-
 end
