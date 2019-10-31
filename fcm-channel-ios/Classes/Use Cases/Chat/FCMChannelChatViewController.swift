@@ -11,7 +11,7 @@ import ISScrollViewPageSwift
 import MBProgressHUD
 import ObjectMapper
 
-open class FCMChannelChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ISScrollViewPageDelegate {
+@objc open class FCMChannelChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ISScrollViewPageDelegate {
     
     private var refreshControl: UIRefreshControl!
     
@@ -35,7 +35,7 @@ open class FCMChannelChatViewController: UIViewController, UITableViewDataSource
     private var presenter: ChatPresenter?
     open private(set) var messages: [ChatCellViewModel] = []
     
-    public init( contact: FCMChannelContact,
+    @objc public init( contact: FCMChannelContact,
                  incomingBubleMsgColor: UIColor = UIColor(with: "#2F97F8"),
                  incomingLabelMsgColor: UIColor = UIColor.black,
                  botName: String,
