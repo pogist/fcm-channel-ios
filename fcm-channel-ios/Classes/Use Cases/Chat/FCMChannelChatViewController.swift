@@ -27,6 +27,7 @@ import ObjectMapper
     var choiceAnswerBorderColor: CGColor
     var choiceAnswerButtonColor: UIColor
     var buttonTitleColor: UIColor
+    var currentBundle: Bundle
 
     var currentMessageIsShowingOption = false
     let flowTypeManager = FCMChannelFlowTypeManager()
@@ -50,6 +51,7 @@ import ObjectMapper
 
         defaultFieldBottonHeight = buttonHeight
         buttonTitleColor = outgoingLabelMsgColor
+        currentBundle = bundle
         self.choiceAnswerBorderColor = choiceAnswerBorderColor
         self.choiceAnswerButtonColor = choiceAnswerButtonColor
 
@@ -210,8 +212,8 @@ import ObjectMapper
         self.tableView.backgroundColor = UIColor.white
         self.tableView.estimatedRowHeight = 75
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.register(UINib(nibName: "FCMChannelIncomingChatMessageViewCell", bundle: Bundle(for: FCMChannelChatViewController.self)), forCellReuseIdentifier: NSStringFromClass(FCMChannelIncomingChatMessageViewCell.self))
-        self.tableView.register(UINib(nibName: "FCMChannelOutgoingChatMessageViewCell", bundle: Bundle(for: FCMChannelChatViewController.self)), forCellReuseIdentifier: NSStringFromClass(FCMChannelOutgoingChatMessageViewCell.self))
+        self.tableView.register(UINib(nibName: "FCMChannelIncomingChatMessageViewCell", bundle: currentBundle), forCellReuseIdentifier: NSStringFromClass(FCMChannelIncomingChatMessageViewCell.self))
+        self.tableView.register(UINib(nibName: "FCMChannelOutgoingChatMessageViewCell", bundle: currentBundle), forCellReuseIdentifier: NSStringFromClass(FCMChannelOutgoingChatMessageViewCell.self))
         self.tableView.separatorColor = UIColor.clear
     }
     
