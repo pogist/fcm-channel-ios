@@ -64,7 +64,11 @@ import ObjectMapper
                                   outgoingLabelMsgColor: outgoingLabelMsgColor,
                                   loadMessagesOnInit: loadMessagesOnInit)
     }
-    
+
+  @objc convenience init(contact: FCMChannelContact, botName: String) {
+    self.init(contact: contact, botName: botName)
+  }
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
