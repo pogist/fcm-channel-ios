@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-open class FCMChannelContact: NSObject, Mappable {
+@objc open class FCMChannelContact: NSObject, Mappable {
    
     open var uuid: String!
     open var urn: String? {
@@ -29,7 +29,7 @@ open class FCMChannelContact: NSObject, Mappable {
     open var fields: [String: Any]?
     open var groups: [FCMChannelGroup] = []
     
-    public init(uuid: String, urn: String, name: String?, fcmToken: String) {
+    @objc public init(uuid: String, urn: String, name: String?, fcmToken: String) {
         self.uuid = uuid
         self.urns = [urn]
         self.name = name
