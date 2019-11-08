@@ -34,7 +34,6 @@ class FCMChannelSettings: NSObject {
     func savePreferedLanguage(_ language: String) {
         let defaults = UserDefaults.standard
         defaults.set(language, forKey: preferedLanguageKey)
-        defaults.synchronize()
     }
 
    func getPreferedLanguage() -> String {

@@ -71,15 +71,13 @@ import ObjectMapper
     }
     
     public static func deactivateChannelContact() {
-        let defaults: UserDefaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "fcmchannelcontact")
-        defaults.synchronize()
     }
     
     public static func setActive(contact: FCMChannelContact) {
-        let defaults: UserDefaults = UserDefaults.standard
-        let encodedObject: Data = NSKeyedArchiver.archivedData(withRootObject: contact.toJSONString() as Any)
+        let defaults = UserDefaults.standard
+        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: contact.toJSONString() as Any)
         defaults.set(encodedObject, forKey: "fcmchannelcontact")
-        defaults.synchronize()
     }
 }

@@ -64,16 +64,14 @@ class User: Serializable {
     
     static func setActiveUser(_ user: User!) {
         self.deactivateUser()
-        let defaults: UserDefaults = UserDefaults.standard
-        let encodedObject: Data = NSKeyedArchiver.archivedData(withRootObject: user.toDictionary())
+
+        let defaults = UserDefaults.standard
+        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: user.toDictionary())
         defaults.set(encodedObject, forKey: "user")
-        defaults.synchronize()
     }
     
     static func deactivateUser() {
-        let defaults: UserDefaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "user")
-        defaults.synchronize()
     }
-    
 }

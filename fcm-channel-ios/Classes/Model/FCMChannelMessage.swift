@@ -80,16 +80,14 @@ open class FCMChannelMessage: NSObject, Mappable {
     }
     
     static func removeLastMessage() {
-        let defaults: UserDefaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "fcmchannelmessage")
-        defaults.synchronize()
     }
     
     static func addLastMessage(message:FCMChannelMessage) {
         removeLastMessage()
-        let defaults: UserDefaults = UserDefaults.standard
-        let encodedObject: Data = NSKeyedArchiver.archivedData(withRootObject: message.toJSONString() as Any)
+        let defaults = UserDefaults.standard
+        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: message.toJSONString() as Any)
         defaults.set(encodedObject, forKey: "fcmchannelmessage")
-        defaults.synchronize()
     }
 }
