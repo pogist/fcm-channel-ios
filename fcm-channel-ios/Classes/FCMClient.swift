@@ -72,6 +72,10 @@ import UIKit
         dataSource.registerFCMContact(urn: urn, name: name, fcmToken: fcmToken, contactUuid: contactUuid, completion: completion)
     }
 
+    @objc open class func saveContact(_ contact: FCMChannelContact, completion: @escaping (FCMChannelContact?, Error?) -> ()) {
+        dataSource.saveContact(contact, completion: completion)
+    }
+
     // MARK: - Language
 
     // Updates the preferred language in the settings

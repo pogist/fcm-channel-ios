@@ -260,6 +260,29 @@ class RestServices {
         })
     }
 
+    func saveContact(_ contact: FCMChannelContact, completion: @escaping (FCMChannelContact?, Error?) -> ()) {
+        let url = "\(FCMChannelSettings.shared.url)\(FCMChannelSettings.shared.V2)contacts.json?uuid=\(contact.uuid!)"
+        let params = contact.toJSON()
+
+        Alamofire.request(
+            url,
+            method: .post,
+            parameters: params,
+            encoding: JSONEncoding.default,
+            headers: headers
+        ).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                if let value = value as? [String: Any], let urns = value["urns"] as? [String] {
+                    contact.urns = urns
+                }
+                completion(contact, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
+
     // MARK: - Class Functions
     private func getMinimumDate() -> Date? {
         let date = Date()
