@@ -15,8 +15,8 @@ import UIKit
 
     @objc open class func setup(_ token: String,
                           channel: String,
-                          url: String = "https://push.ilhasoft.mobi/api/",
-                          handler: String = "https://push.ilhasoft.mobi/c/fcm/") {
+                          url: String = "https://new.push.al/api/",
+                          handler: String = "https://new.push.al/c/fcm/") {
         FCMChannelSettings.setup(token, channel: channel, url: url, handler: handler)
     }
 
